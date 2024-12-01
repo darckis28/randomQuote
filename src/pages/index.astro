@@ -1,11 +1,36 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Buttons from "../components/Buttons.astro";
+import ContainnerQuote from "../components/ContainnerQuote.astro";
+import Layout from "../layouts/Layout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Random Quote">
+  <main class="min-h-screen w-full flex flex-col items-center justify-center">
+    <ContainnerQuote />
+    <Buttons />
+  </main>
 </Layout>
+<script>
+  import { historicalQuotes } from "../data/quotes";
+  const personContent = document.getElementById("person"),
+    quoteContent = document.getElementById("quote"),
+    copy = document.getElementById("copy"),
+    random = document.getElementById("random");
+
+  copy?.addEventListener("click", copyClipBoard);
+  random?.addEventListener("click", randomQuote);
+
+  function randomQuote() {
+    const numberRandom = Math.floor(Math.random() * historicalQuotes.length);
+    const { person, quote } = historicalQuotes[numberRandom];
+    personContent.innerHTML = person;
+    quoteContent.innerHTML = quote;
+  }
+  function copyClipBoard() {
+    navigator.clipboard.writeText(quoteContent.textContent);
+  }
+  randomQuote();
+</script>

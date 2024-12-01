@@ -1,0 +1,30 @@
+---
+import Etiqueta from "./Etiqueta.astro";
+---
+
+<section
+  class="section max-w-xl bg-cover bg-no-repeat bg-bottom bg-grayOne rounded-lg px-8 pt-5 pb-9"
+>
+  <h1
+    id="person"
+    class="text-center font-bold text-xl mb-4"
+  >
+    George Bernard
+  </h1>
+  <div class="mb-6 flex justify-center gap-2">
+    <Etiqueta title={"Interesting"} />
+    <Etiqueta title="Famous quote" />
+  </div>
+  <p class="text-center block text-grayThree text-2xl">
+    “<span id="quote">
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat mollitia
+      temporibus maxime quasi quae "
+    </span>”
+  </p>
+</section>
+
+<style>
+  .section {
+    background-image: url("../assets/images/bg-image.svg");
+  }
+</style>
